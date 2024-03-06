@@ -9,7 +9,7 @@
 #include <vector>
 
 
-#define NumOfPorts 100000
+#define NumOfPorts 10000
 
 #pragma comment(lib, "Ws2_32.lib")
 
@@ -54,6 +54,15 @@ int main() {
     std::string host = "127.0.0.1";
     std::vector<std::thread> threads;
 
+
+    //unlocking port 1234 with the sequence:
+    threads.emplace_back(portScanner, host, 1111);
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    threads.emplace_back(portScanner, host, 3333);
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    threads.emplace_back(portScanner, host, 2222);
+
+    //regular scanning
     for (int i = 0; i < NumOfPorts; i++) {
         threads.emplace_back(portScanner, host, i);
     }
