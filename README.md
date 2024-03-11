@@ -6,6 +6,9 @@ Checking open Ports in IP: "127.0.0.1",
 Open client handler hiding on port 1234 using knock sequence
 Knocking sequence ports: 1111, 3333, 2222
 
+also created server that hiding from the port scanner,
+using "Black list" - avoid connection to every port that start with "192.168..."
+
 "knocking sequence" - method
 Using port scanner
 Using TCP protocol
